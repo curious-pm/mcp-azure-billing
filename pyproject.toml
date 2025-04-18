@@ -1,0 +1,21 @@
+[project]
+name = "mcp-azure-billing"
+version = "0.0.1"
+description = "MCP server for Azure Billing integration"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.6.0",
+    "httpx>=0.24.0",
+]
+
+[project.scripts]
+mcp-azure-billing = "mcp_azure_billing.__init__:main"
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/mcp-azure-billing"
+"Bug Tracker" = "https://github.com/yourusername/mcp-azure-billing/issues"
