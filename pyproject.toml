@@ -1,6 +1,6 @@
 [project]
 name = "mcp-azure-billing"
-version = "0.0.1"
+version = "0.0.2"
 description = "MCP server for Azure Billing integration"
 readme = "README.md"
 requires-python = ">=3.10"

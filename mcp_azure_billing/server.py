@@ -248,7 +248,7 @@ async def get_price_sheet() -> str:
 
 # === RESOURCES ===
 
-@mcp.resource("azure_billing://subscription")
+@mcp.resource("https://azure-billing/subscription")
 async def get_subscription_resource() -> str:
     """Get details about the current subscription."""
     endpoint = f"/subscriptions/{AZURE_BILLING_SUBSCRIPTION_ID}"
@@ -261,7 +261,7 @@ async def get_subscription_resource() -> str:
     
     return json.dumps(result, indent=2)
 
-@mcp.resource("azure_billing://billing-summary")
+@mcp.resource("https://azure-billing/billing-summary")
 async def get_billing_summary_resource() -> str:
     """Get a summary of current billing for the subscription."""
     # We'll use cost management API to get a quick summary
@@ -298,7 +298,7 @@ async def get_billing_summary_resource() -> str:
     
     return json.dumps(result, indent=2)
 
-@mcp.resource("azure_billing://budgets")
+@mcp.resource("https://azure-billing/budgets")
 async def get_budgets_resource() -> str:
     """Get all budgets for the subscription."""
     endpoint = f"/subscriptions/{AZURE_BILLING_SUBSCRIPTION_ID}/providers/Microsoft.Consumption/budgets"
