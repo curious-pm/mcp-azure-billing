@@ -159,7 +159,7 @@ cli = [
 
 [[package]]
 name = "mcp-azure-billing"
-version = "0.0.1"
+version = "0.0.3"
 source = { editable = "." }
 dependencies = [
     { name = "httpx" },

@@ -314,7 +314,7 @@ async def get_budgets_resource() -> str:
 # === PROMPTS ===
 
 @mcp.prompt("analyze_costs")
-def analyze_costs_prompt(timeframe: str = None, group_by: str = None):
+def analyze_costs_prompt(timeframe: str = None, group_by: str = None) -> str:
     """
     A prompt template for analyzing Azure costs.
     
@@ -323,76 +323,25 @@ def analyze_costs_prompt(timeframe: str = None, group_by: str = None):
         group_by: Property to group the analysis by (ResourceGroup, ResourceId, etc.)
     """
     if timeframe and group_by:
-        return {
-            "messages": [
-                {
-                    "role": "user",
-                    "content": {
-                        "type": "text",
-                        "text": f"Please analyze my Azure costs for the timeframe '{timeframe}', grouped by '{group_by}'. What insights can you provide about my spending patterns, and are there any anomalies or areas where I could optimize costs?"
-                    }
-                }
-            ]
-        }
+        return f"Please analyze my Azure costs for the timeframe '{timeframe}', grouped by '{group_by}'. What insights can you provide about my spending patterns, and are there any anomalies or areas where I could optimize costs?"
     elif timeframe:
-        return {
-            "messages": [
-                {
-                    "role": "user",
-                    "content": {
-                        "type": "text",
-                        "text": f"Please analyze my Azure costs for the timeframe '{timeframe}'. What insights can you provide about my spending patterns, and are there any anomalies or areas where I could optimize costs?"
-                    }
-                }
-            ]
-        }
+        return f"Please analyze my Azure costs for the timeframe '{timeframe}'. What insights can you provide about my spending patterns, and are there any anomalies or areas where I could optimize costs?"
     else:
-        return {
-            "messages": [
-                {
-                    "role": "user",
-                    "content": {
-                        "type": "text",
-                        "text": "Please analyze my Azure costs. What insights can you provide about my spending patterns, and are there any anomalies or areas where I could optimize costs?"
-                    }
-                }
-            ]
-        }
+        return "Please analyze my Azure costs. What insights can you provide about my spending patterns, and are there any anomalies or areas where I could optimize costs?"
 
 @mcp.prompt("budget_recommendations")
-def budget_recommendations_prompt():
+def budget_recommendations_prompt() -> str:
     """
     A prompt template for getting budget recommendations.
     """
-    return {
-        "messages": [
-            {
-                "role": "user",
-                "content": {
-                    "type": "text",
-                    "text": "Based on my Azure usage and spending patterns, what budget recommendations would you suggest? Please analyze my current spending and provide realistic budget thresholds for different resource categories."
-                }
-            }
-        ]
-    }
+    return "Based on my Azure usage and spending patterns, what budget recommendations would you suggest? Please analyze my current spending and provide realistic budget thresholds for different resource categories."
 
 @mcp.prompt("cost_reduction")
-def cost_reduction_prompt():
+def cost_reduction_prompt() -> str:
     """
     A prompt template for getting cost reduction suggestions.
     """
-    return {
-        "messages": [
-            {
-                "role": "user",
-                "content": {
-                    "type": "text",
-                    "text": "Please analyze my Azure billing data and suggest specific ways I could reduce costs. Identify resources that might be underutilized, oversized, or could benefit from reserved instances or savings plans."
-                }
-            }
-        ]
-    }
-
+    return "Please analyze my Azure billing data and suggest specific ways I could reduce costs. Identify resources that might be underutilized, oversized, or could benefit from reserved instances or savings plans."
 if __name__ == "__main__":
     print("Starting Azure Billing MCP server...", file=sys.stderr)
     mcp.run()
